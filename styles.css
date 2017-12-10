@@ -41,6 +41,7 @@
     grid-column: 4 / 10;
     grid-row: 1 / 13;
     background-color: #16063A;
+    overflow: hidden;
   }
   .info-container {
     grid-column: 10 / 13;
@@ -72,6 +73,24 @@
       top: 50%;
       left: 50%; 
       transform: translate(-50px, -50px);
+  }
+  .run {
+    position :relative;
+    -webkit-animation: run 5s ease-in-out 1; /* Safari 4.0 - 8.0 */
+    animation: run 5s ease-in-out 1;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes run {
+    0%   {left: -10%;}
+    100% {left: 110%;}
+}
+
+/* Standard syntax */
+@keyframes run {
+    0%   {left: -10%;}
+    100% {left: 110%;}
+}
   }
 
   @media (max-width: 800px) {
