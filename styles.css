@@ -19,11 +19,12 @@
   .leaderboard-container {
     grid-column: 1 / 4;
     grid-row: 1 / 13;
-    background-color: red;
+    background-color: #452F74;
     overflow: scroll;
     justify-content: center;
     align-content: center;
     text-align: center;
+    color: white;
   }
   .leaderboard {
     border: 2px black solid;
@@ -33,22 +34,22 @@
     padding: 5px;
     text-align: left;
   }
-  .leaderboard-score {
-    border-bottom: 1px black solid;  
+  .leaderboard-score { 
     margin: 20px 0 20px 0;
   }
   .play-container { 
     grid-column: 4 / 10;
     grid-row: 1 / 13;
-    background-color: blue;
+    background-color: #16063A;
   }
   .info-container {
     grid-column: 10 / 13;
     grid-row: 1 / 13;
-    background-color: green;
+    background-color: #452F74;
     justify-content: center;
     align-content: center;
     text-align: center;
+    color: white;
   }
   .stats-list {
     border: 2px black solid;
