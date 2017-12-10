@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 0;
+    height: 100vh;
+    min-width: 400px;
+    margin: 0 auto;
+  }
+  .leaderboard-container {
+    grid-column: 1 / 4;
+    grid-row: 1 / 13;
+    background-color: #452F74;
+    overflow: scroll;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    color: white;
+  }
+  .leaderboard {
+    border: 2px black solid;
+    font-family: "Lato", sans-serif;
+    font-size: 1em;
+    margin: 10px;
+    padding: 5px;
+    text-align: left;
+  }
+  .leaderboard-score { 
+    margin: 20px 0 20px 0;
+  }
+  .play-container { 
+    grid-column: 4 / 10;
+    grid-row: 1 / 13;
+    background-color: #16063A;
+    overflow: hidden;
+  }
+  .start-screen {
+      filter: blur(20px);
+  }
+  .info-container {
+    grid-column: 10 / 13;
+    grid-row: 1 / 13;
+    background-color: #452F74;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    color: white;
+  }
+  .stats-list {
+    border: 2px black solid;
+    font-family: "Lato", sans-serif;
+    font-size: 1em;
+    margin: 10px;
+    padding: 5px;
+    text-align: left;
+  }
+  .stats {
+    border-bottom: 1px black solid;  
+    margin: 20px 0 20px 0;
+  }
+  .enemy {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%; 
+      transform: translate(-50px, -50px);
+  }
+  .run {
+    position :relative;
+    -webkit-animation: run 5s ease-in-out 1; /* Safari 4.0 - 8.0 */
+    animation: run 5s ease-in-out 1;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes run {
+    0%   {left: -10%;}
+    100% {left: 110%;}
+}
+
+/* Standard syntax */
+@keyframes run {
+    0%   {left: -10%;}
+    100% {left: 110%;}
+}
+  }
+
+  @media (max-width: 800px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        grid-gap: 0;
+        height: 100vh;
+        margin: 0 auto;
+      }
+      .leaderboard-container {
+          display: none;
+      }
+      .play-container { 
+        grid-column: 1 / 13;
+        grid-row: 1 / 13;
+        background-color: blue;
+      }
+      .info-container {
+          display: none;
+      }
+  }
