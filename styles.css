@@ -21,6 +21,21 @@
     grid-row: 1 / 13;
     background-color: red;
     overflow: scroll;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+  .leaderboard {
+    border: 2px black solid;
+    font-family: "Lato", sans-serif;
+    font-size: 1em;
+    margin: 10px;
+    padding: 5px;
+    text-align: left;
+  }
+  .leaderboard-score {
+    border-bottom: 1px black solid;  
+    margin: 20px 0 20px 0;
   }
   .play-container { 
     grid-column: 4 / 10;
@@ -31,6 +46,21 @@
     grid-column: 10 / 13;
     grid-row: 1 / 13;
     background-color: green;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+  .stats-list {
+    border: 2px black solid;
+    font-family: "Lato", sans-serif;
+    font-size: 1em;
+    margin: 10px;
+    padding: 5px;
+    text-align: left;
+  }
+  .stats {
+    border-bottom: 1px black solid;  
+    margin: 20px 0 20px 0;
   }
 
   @media (max-width: 800px) {
