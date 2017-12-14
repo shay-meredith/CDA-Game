@@ -1,11 +1,10 @@
-* {
+	* {
     box-sizing: border-box;
   }
-  html,
-  body {
+
+  html, body {
     padding: 0;
     margin: 0;
-    overflow: hidden;
   }
 
   /* START SCREEN CSS
@@ -62,50 +61,73 @@
     50% {transform: translateY(-5vh);}
   }
 
-  /* START SCREEN CSS
+  /* GENERAL CSS
   -----------------------------*/
 
   .wrapper {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    grid-gap: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
     height: 100vh;
-    min-width: 400px;
+    width: 100vw;
     margin: 0 auto;
   }
 
-  /* LEFT LEADERBOARD SECTION
+  /* LEADERBOARD SECTION
   -----------------------------*/
 
   .leaderboard-container {
-    grid-column: 1 / 4;
-    grid-row: 1 / 13;
+    font-family: 'Press Start 2P', "Lato", sans-serif;
+    width: 25vw;
+    height: 100vh;
     background-color: #452F74;
-    overflow: scroll;
-    justify-content: center;
-    align-content: center;
     text-align: center;
     color: white;
   }
-  .leaderboard {
-    border: 2px black solid;
-    font-family: "Lato", sans-serif;
-    font-size: 1em;
-    margin: 10px;
-    padding: 5px;
-    text-align: left;
+
+  .leaderboard-title {
+    height: 7vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
   }
+
+  .leaderboard-container > .leaderboard-title > h2 {
+    font-style: italic;
+    width: 25vw;
+    font-size: 2vw;
+  }
+
+  .leaderboard {
+    font-size: 1.3vw;
+    width: 100%;
+    height: 93vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
   .leaderboard-score {
-    margin: 20px 0 20px 0;
+    margin: 2px 0 10px 0;
+  }
+
+  .leaderboard-score-after {
+    width: 25vw;
+    height: 2px;
+    background-color: white;
+    content: "";
+    margin-bottom: 10px;
+
   }
 
   /* GAME AREA
   -----------------------------*/
 
   .play-container {
-    grid-column: 4 / 10;
-    grid-row: 1 / 13;
+    width: 50vw;
     background-color: #16063A;
     overflow: hidden;
   }
@@ -125,7 +147,7 @@
     position :relative;
     -webkit-animation: run 5s ease-in-out 1; /* Safari 4.0 - 8.0 */
     animation: run 5s ease-in-out 1;
-}
+  }
 
   .start-screen {
       filter: blur(20px);
@@ -142,14 +164,13 @@
       0%   {left: -10%;}
       100% {left: 110%;}
   }
-    }
 
-  /* RIGHT INFO SECTION
+  /* INFO SECTION
   -----------------------------*/
 
   .info-container {
-    grid-column: 10 / 13;
-    grid-row: 1 / 13;
+    font-family: 'Press Start 2P', "Lato", sans-serif;
+    width: 25vw;
     background-color: #452F74;
     justify-content: center;
     align-content: center;
@@ -157,25 +178,72 @@
     color: white;
   }
 
-  .stats-list {
-    border: 2px black solid;
-    font-family: "Lato", sans-serif;
-    font-size: 1em;
-    margin: 10px;
-    padding: 5px;
-    text-align: left;
-  }
-  .stats {
-    border-bottom: 1px black solid;
-    margin: 20px 0 20px 0;
+  .info-title {
+    height: 7vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
   }
 
-  @media (max-width: 800px) {
+  .info-container img {
+    width: 25vw;
+    height: 32vh;
+  }
+
+  .info-container > .info-title > h2 {
+    font-style: italic;
+    width: 25vw;
+    font-size: 2vw;
+  }
+
+  .stats-list {
+    font-size: 2vw;
+    width: 100%;
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .level-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 51vh;
+    padding: 5vh 0;
+  }
+
+  .score-box {
+    padding: 3vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 21vh;
+  }
+
+  .clock-box {
+    padding: 3vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 21vh;
+  }
+
+  .level {
+    width: 25vw;
+    font-size: 2vw;
+    text-shadow: 1px 1px blue;
+  }
+
+
+
+  /* MOBILE
+  -----------------------------*/
+
+  /* @media (max-width: 790px) {
     .wrapper {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12, 1fr);
-        grid-gap: 0;
+        width: 100vw;
         height: 100vh;
         margin: 0 auto;
       }
@@ -183,11 +251,10 @@
           display: none;
       }
       .play-container {
-        grid-column: 1 / 13;
-        grid-row: 1 / 13;
+        width: 100vw;
         background-color: blue;
       }
       .info-container {
           display: none;
       }
-  }
+  } */
