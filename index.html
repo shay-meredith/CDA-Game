@@ -13,7 +13,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="icon" href="https://raw.githubusercontent.com/shay-meredith/CDA-Game/development/img/space/invader16.png"
     type="image/gif" sizes="16x16">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Press+Start+2P" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -21,32 +21,74 @@
   <div class="starting-element-container">
     <div class="starting-element">
       <img class="invader-pic" src="img\space\invader16.png" alt="a picture of an alien. Be afraid.">
-      <h1>Welcome to Catch da Alien!</h1>
+      <h2>Welcome to Catch da Alien!</h2>
       <button type="button" name="button" class="start-button" onclick="loadGame()"><h2>Game on!</h2></button>
     </div>
   </div>
   <div class="wrapper">
-      <div class="leaderboard-container">
-          <h1>Leaderboard</h1>
-          <div class="leaderboard">
-              <div class="leaderboard-score">Alexever17: 423,954 points</div>
-              <div class="leaderboard-score">Shay: 238,112 points</div>
-              <div class="leaderboard-score">Chance: 199,083 points</div>
-          </div>
-      </div>
-      <div class="play-container">
-          <div class="enemy" id="alien" onclick="destroy()"></div>
-      </div>
-      <div class="info-container">
-          <h1>Info</h1>
-          <div class="stats-list">
-              <div class="stats">Timer: 50sec</div>
-              <div class="stats">Score: 50,614</div>
-              <div class="stats">Next-Level: 3,094 points</div>
-              <div class="stats">Level: 9</div>
-              <div class="stats">Play Time: 4min 37sec</div>
-          </div>
-      </div>
+    <div class="info-container">
+        <h2>Info</h2>
+        <div class="stats-list">
+            <div class="stats">Timer: 50sec</div>
+            <div class="stats">Score: 50,614</div>
+            <div class="stats">Next-Level: 3,094 points</div>
+            <div class="stats">Level: 9</div>
+            <div class="stats">Play Time: 4min 37sec</div>
+        </div>
+    </div>
+    <div class="play-container">
+        <div class="enemy" id="alien" onclick="destroy()"></div>
+    </div>
+    <div class="leaderboard-container">
+        <h2>Leaderboard</h2>
+        <div class="leaderboard">
+            <span class="leaderboard-name">Alexever17</span>
+            <span class="leaderboard-score">42395 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Shay</span>
+            <span class="leaderboard-score">23811 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Chance</span>
+            <span class="leaderboard-score">19900 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Alexever17</span>
+            <span class="leaderboard-score">42395 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Shay</span>
+            <span class="leaderboard-score">23811 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Chance</span>
+            <span class="leaderboard-score">19900 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Alexever17</span>
+            <span class="leaderboard-score">42395 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Shay</span>
+            <span class="leaderboard-score">23811 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Chance</span>
+            <span class="leaderboard-score">19900 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Alexever17</span>
+            <span class="leaderboard-score">42395 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Shay</span>
+            <span class="leaderboard-score">23811 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Chance</span>
+            <span class="leaderboard-score">19900 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Alexever17</span>
+            <span class="leaderboard-score">42395 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Shay</span>
+            <span class="leaderboard-score">23811 P.</span>
+            <div class="leaderboard-score-after"></div>
+            <span class="leaderboard-name">Chance</span>
+            <span class="leaderboard-score">19900 P.</span>
+            <div class="leaderboard-score-after"></div>
+        </div>
+    </div>
   </div>
 
   <script src="index.js"></script>
