@@ -11,36 +11,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.ico in the root directory -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+    <link rel="icon" href="https://raw.githubusercontent.com/shay-meredith/CDA-Game/development/img/space/invader16.png"
+    type="image/gif" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="leaderboard-container">
-            <h1>Leaderboard</h1>
-            <div class="leaderboard">
-                <div class="leaderboard-score">Alexever17: 423,954 points</div>
-                <div class="leaderboard-score">Shay: 238,112 points</div>
-                <div class="leaderboard-score">Chance: 199,083 points</div>
-            </div>
-        </div>
-        <div class="play-container">
-            <div class="enemy" id="alien" onclick="destroy()"></div>
-        </div>
-        <div class="info-container">
-            <h1>Info</h1>
-            <div class="stats-list">
-                <div class="stats">Timer: 50sec</div>
-                <div class="stats">Score: 50,614</div>
-                <div class="stats">Next-Level: 3,094 points</div>
-                <div class="stats">Level: 9</div>
-                <div class="stats">Play Time: 4min 37sec</div>
-            </div>
-        </div>
+  <div class="starting-element-container">
+    <div class="starting-element">
+      <img class="invader-pic" src="img\space\invader16.png" alt="a picture of an alien. Be afraid.">
+      <h1>Welcome to Catch da Alien!</h1>
+      <button type="button" name="button" class="start-button" onclick="loadGame()"><h2>Game on!</h2></button>
     </div>
+  </div>
+  <div class="wrapper">
+      <div class="leaderboard-container">
+          <h1>Leaderboard</h1>
+          <div class="leaderboard">
+              <div class="leaderboard-score">Alexever17: 423,954 points</div>
+              <div class="leaderboard-score">Shay: 238,112 points</div>
+              <div class="leaderboard-score">Chance: 199,083 points</div>
+          </div>
+      </div>
+      <div class="play-container">
+          <div class="enemy" id="alien" onclick="destroy()"></div>
+      </div>
+      <div class="info-container">
+          <h1>Info</h1>
+          <div class="stats-list">
+              <div class="stats">Timer: 50sec</div>
+              <div class="stats">Score: 50,614</div>
+              <div class="stats">Next-Level: 3,094 points</div>
+              <div class="stats">Level: 9</div>
+              <div class="stats">Play Time: 4min 37sec</div>
+          </div>
+      </div>
+  </div>
 
-    <script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
