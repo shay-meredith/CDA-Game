@@ -1,6 +1,9 @@
 var cycleNumber = 2;
+var aliensHeadCount = 0;
 var gameRounds = 1;
 var id = 0;
+var score = 0;
+var died = false;
 
 function loadGame() {
   var parent = document.body;
@@ -10,29 +13,28 @@ function loadGame() {
 }
 
 function gameStart() {
-    var died = false;
     cycle();
-    for (var i = 0; i < 10; i++) {
-        gameFunction(died);
-    }
-}
-
-function gameFunction(died) {
-    setTimeout(function(){
+    var timer = setInterval(function(){
+        died = gameCheck();
         if (died) {
+            clearInterval(timer);
             gameFinish();
         } else {
             cycle();
-        }
-    }, 3000);
+        } }, 5000);
 }
 
 function gameCheck() {
-    return true;
+    if (aliensHeadCount == 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function cycle() {
     cycleNumber += 1;
+    aliensHeadCount += cycleNumber;
     for (var i = 0; i < cycleNumber; i++) {
         spawnAlien();
     }
@@ -72,12 +74,22 @@ function positionRandomizerDesktop(identifyier) {
     return output;
 }
 
+// ALIEN FUNCTION
+
 function deleteAlien(alien) {
+    aliensHeadCount -= 1;
+    score += 10;
+    document.getElementsByClassName("score")[0].innerHTML = score;
     var parent = document.getElementById("area");
     parent.removeChild(alien);
 }
 
-// function destroy() {
-//     const alien = document.getElementById('alien');
-//     alien.style.display = 'none';
-// }
+function gameFinish() {
+    var parent = document.getElementById("area");
+    children = document.getElementsByClassName("alien");
+    childrenN = children.length;
+    for (var i = 0; i < childrenN; i++) {
+        parent.removeChild(children[0]);
+    }
+    document.getElementsByClassName("score")[0].innerHTML = "DIED Score: " + score;
+}
