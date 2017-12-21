@@ -107,6 +107,8 @@ function gameFinish() {
         startScreen.style.display = 'flex';
         clockSeconds = 0;
         clockMinutes = 0;
+        score = 0;
+        document.getElementsByClassName("score")[0].innerHTML = score;
     }, 3000);
 }
 
