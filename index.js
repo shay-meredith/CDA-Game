@@ -12,14 +12,14 @@ let clockMinutes = 00;
 const clock = document.getElementById("clock");
 
 function loadGame() {
-  var startContainer = document.getElementsByClassName("starting-element-container")[0];
-  startContainer.style.display = 'none';
-  countingClock = setInterval(gameClock, 1000);
-  clock.innerHTML = "00:00";
-  gameStart();
+    var startContainer = document.getElementsByClassName("starting-element-container")[0];
+    startContainer.style.display = 'none';
+    gameStart();
 }
 
 function gameStart() {
+    countingClock = setInterval(gameClock, 1000);
+    clock.innerHTML = "00:00";
     cycle();
     var timer = setInterval(function(){
         died = gameCheck();
@@ -42,7 +42,7 @@ function gameCheck() {
 
 function roundSetter() {
     gameRounds++;
-    document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
+    document.getElementById('level-count').innerHTML = `Level: <b>${gameRounds}</b>`;
 }
 
 // ADD CORRECT NUMBER OF ALIENS
@@ -95,7 +95,7 @@ function birthAlien(alienPath, top, left) {
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
     score += 10;
-    document.getElementById('score').innerHTML = `Score: ${score}`;
+    document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
     var parent = document.getElementById("area");
     parent.removeChild(alien);
 }
@@ -110,7 +110,7 @@ function gameFinish() {
         parent.removeChild(children[0]);
     }
 
-    document.getElementById("score").innerHTML = `DIED <br><br> Score: ${score}`;
+    document.getElementById("score").innerHTML = `DIED <br><br> Score: <b>${score}</b>`;
     displayEndscreen();
 }
 

@@ -230,11 +230,20 @@
   }
 
   .clock-box {
-    padding: 3vh 0;
+    padding: 3vh 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 21vh;
+  }
+
+  .clock {
+	  text-shadow: 2px 2px #E7AFD3;
+  }
+
+  b {
+	  font-weight: normal;
+	  text-shadow: 2px 2px #E7AFD3;
   }
 
   .level {
