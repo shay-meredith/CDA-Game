@@ -109,6 +109,9 @@ function gameFinish() {
         clockMinutes = 0;
         score = 0;
         document.getElementsByClassName("score")[0].innerHTML = score;
+        gameRounds = 1;
+        aliensHeadCount = 0;
+        cycleNumber = 2;
     }, 3000);
 }
 
