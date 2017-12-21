@@ -105,6 +105,8 @@ function gameFinish() {
     const startScreen = document.getElementsByClassName("starting-element-container")[0];
     setTimeout(() => {
         startScreen.style.display = 'flex';
+        clockSeconds = 0;
+        clockMinutes = 0;
     }, 3000);
 }
 
