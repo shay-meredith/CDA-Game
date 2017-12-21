@@ -3,6 +3,7 @@ var cycleNumber = 2;
 var gameRounds = 1;
 var gameRoundLength = 7000;
 var id = 0;
+var idmaker;
 var score = 0;
 var died = false;
 let countingClock;
@@ -60,6 +61,8 @@ function spawnAlien() {
     var top = positionRandomizerDesktop(0);
     var left = positionRandomizerDesktop(1);
     birthAlien(alienPath, top, left);
+    idmaker = "a" + id;
+    document.getElementById(idmaker).classList.add("visible");
     id += 1;
 }
 
@@ -83,7 +86,7 @@ function birthAlien(alienPath, top, left) {
     alien.setAttribute('style', 'top: '+ top + '%; left: '+left+'%;');
     alien.setAttribute('onclick', 'deleteAlien(this)');
     alien.setAttribute('src', alienPath);
-    alien.setAttribute('id', id);
+    alien.setAttribute('id', "a" + id);
     area.appendChild(alien);
 }
 
