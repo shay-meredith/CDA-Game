@@ -94,7 +94,7 @@ function birthAlien(alienPath, top, left) {
 
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
-    score += Math.floor(10*Math.pow(gameRounds,1.02));
+    score += Math.floor((10*Math.pow(gameRounds,1.01))/3);
     document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
     var parent = document.getElementById("area");
     parent.removeChild(alien);
