@@ -15,6 +15,7 @@ function loadGame() {
   countingClock = setInterval(gameClock, 1000);
   clock.innerHTML = "00:00";
   child.style.display = 'none';
+  document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
   gameStart();
 }
 
@@ -27,6 +28,8 @@ function gameStart() {
             gameFinish();
         } else {
             cycle();
+            gameRounds++;
+            document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
         } }, 5000);
 }
 
@@ -38,6 +41,7 @@ function gameCheck() {
     }
 }
 
+// ADD CORRECT NUMBER OF ALIENS
 function cycle() {
     cycleNumber += 1;
     aliensHeadCount += cycleNumber;
