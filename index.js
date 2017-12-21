@@ -4,10 +4,13 @@ var gameRounds = 1;
 var id = 0;
 var score = 0;
 var died = false;
+let countingClock;
 
 function loadGame() {
   var parent = document.body;
   var child = document.getElementsByClassName("starting-element-container")[0];
+  countingClock = setInterval(gameClock, 1000);
+  clock.innerHTML = "00:00";
   parent.removeChild(child);
   gameStart();
 }
@@ -92,4 +95,34 @@ function gameFinish() {
         parent.removeChild(children[0]);
     }
     document.getElementsByClassName("score")[0].innerHTML = "DIED Score: " + score;
+    clearTimeout(countingClock);
+}
+
+
+// CLOCK FUNCTION
+let clockSeconds = 00;
+let clockMinutes = 00;
+const clock = document.getElementById("clock");
+
+function gameClock() {
+    clockSeconds++;
+
+    if (clockMinutes < 10 && clockSeconds < 10) {
+        clock.innerHTML = `0${clockMinutes}:0${clockSeconds}`;
+    } 
+    else if (clockMinutes > 9 && clockSeconds < 10) {
+        clock.innerHTML = `${clockMinutes}:0${clockSeconds}`;
+    }
+    else if (clockMinutes < 10 && clockSeconds > 9) {
+        clock.innerHTML = `0${clockMinutes}:${clockSeconds}`;
+    }
+    else {
+        clock.innerHTML = `${clockMinutes}:${clockSeconds}`;
+    }
+    
+    if (clockSeconds > 59) {
+        clockMinutes++;
+        clockSeconds = 0;
+    }
+
 }
