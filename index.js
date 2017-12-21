@@ -5,13 +5,16 @@ var id = 0;
 var score = 0;
 var died = false;
 let countingClock;
+let clockSeconds = 00;
+let clockMinutes = 00;
+const clock = document.getElementById("clock");
 
 function loadGame() {
   var parent = document.body;
   var child = document.getElementsByClassName("starting-element-container")[0];
   countingClock = setInterval(gameClock, 1000);
   clock.innerHTML = "00:00";
-  parent.removeChild(child);
+  child.style.display = 'none';
   gameStart();
 }
 
@@ -96,14 +99,17 @@ function gameFinish() {
     }
     document.getElementsByClassName("score")[0].innerHTML = "DIED Score: " + score;
     clearTimeout(countingClock);
+
+
+    const bodyElement = document.body;
+    const startScreen = document.getElementsByClassName("starting-element-container")[0];
+    setTimeout(() => {
+        startScreen.style.display = 'flex';
+    }, 3000);
 }
 
 
 // CLOCK FUNCTION
-let clockSeconds = 00;
-let clockMinutes = 00;
-const clock = document.getElementById("clock");
-
 function gameClock() {
     clockSeconds++;
 
