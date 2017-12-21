@@ -16,6 +16,7 @@ function loadGame() {
   clock.innerHTML = "00:00";
   child.style.display = 'none';
   document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
+  document.getElementById('score').innerHTML = `Score: ${score}`;
   gameStart();
 }
 
@@ -29,6 +30,7 @@ function gameStart() {
         } else {
             cycle();
             gameRounds++;
+            document.getElementById('score').innerHTML = `Score: ${score}`;
             document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
         } }, 5000);
 }
@@ -89,7 +91,7 @@ function positionRandomizerDesktop(identifyier) {
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
     score += 10;
-    document.getElementsByClassName("score")[0].innerHTML = score;
+    document.getElementById('score').innerHTML = `Score: ${score}`;
     var parent = document.getElementById("area");
     parent.removeChild(alien);
 }
@@ -101,7 +103,8 @@ function gameFinish() {
     for (var i = 0; i < childrenN; i++) {
         parent.removeChild(children[0]);
     }
-    document.getElementsByClassName("score")[0].innerHTML = "DIED Score: " + score;
+    document.getElementById("score").innerHTML = `DIED
+    Score: ${score}`;
     clearTimeout(countingClock);
 
 
@@ -112,7 +115,7 @@ function gameFinish() {
         clockSeconds = 0;
         clockMinutes = 0;
         score = 0;
-        document.getElementsByClassName("score")[0].innerHTML = score;
+        document.getElementByID("score").innerHTML = score;
         gameRounds = 1;
         aliensHeadCount = 0;
         cycleNumber = 2;
