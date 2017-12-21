@@ -94,7 +94,7 @@ function birthAlien(alienPath, top, left) {
 
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
-    score += 10;
+    score += Math.floor(10*Math.pow(gameRounds,1.02));
     document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
     var parent = document.getElementById("area");
     parent.removeChild(alien);
@@ -110,7 +110,7 @@ function gameFinish() {
         parent.removeChild(children[0]);
     }
 
-    document.getElementById("score").innerHTML = `DIED <br><br> Score: <b>${score}</b>`;
+    document.getElementById("score").innerHTML = `<i> &nbsp;DIED</i> <br><br> Score: <b>${score}</b>`;
     displayEndscreen();
 }
 
@@ -132,6 +132,8 @@ function newGameInitiator() {
     var parent = document.getElementById("area");
     child = document.getElementsByClassName("endtext");
     parent.removeChild(child[0]);
+    document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
+    document.getElementById('level-count').innerHTML = `Level: <b>${gameRounds}</b>`;
     gameStart();
 }
 

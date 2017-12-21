@@ -140,7 +140,7 @@
   }
 
   .visible {
-	  animation: fadeInFromNone 0.5s ease forwards;
+	  animation: fadeInFromNone 1s ease forwards;
   }
 
 @keyframes fadeInFromNone {
@@ -246,12 +246,18 @@
 	  text-shadow: 2px 1px #E7AFD3;
   }
 
+  i {
+	  font-style: normal;
+	  font-weight: bold;
+	  color: #A43741;
+	  text-shadow: 2px 1px #220003;
+  }
+
   .level {
     width: 25vw;
     font-size: 1.5vw;
 	line-height: 2vw;
-    text-shadow: 1px 1px blue;
-	border: 1px solid white;
+    text-shadow: 2px 1px #1F1959;
 	margin: 5vh 0 0 0;
   }
 
@@ -284,6 +290,7 @@
 
   .endbutton:hover {
 	  transform: scale(1.05);
+	  text-shadow: 2px 1px #220003;
   }
 
   /* MOBILE
