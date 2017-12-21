@@ -1,6 +1,7 @@
-var cycleNumber = 2;
 var aliensHeadCount = 0;
+var cycleNumber = 2;
 var gameRounds = 1;
+var gameRoundLength = 7000;
 var id = 0;
 var score = 0;
 var died = false;
@@ -10,13 +11,10 @@ let clockMinutes = 00;
 const clock = document.getElementById("clock");
 
 function loadGame() {
-  var parent = document.body;
-  var child = document.getElementsByClassName("starting-element-container")[0];
+  var startContainer = document.getElementsByClassName("starting-element-container")[0];
+  startContainer.style.display = 'none';
   countingClock = setInterval(gameClock, 1000);
   clock.innerHTML = "00:00";
-  child.style.display = 'none';
-  document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
-  document.getElementById('score').innerHTML = `Score: ${score}`;
   gameStart();
 }
 
@@ -29,10 +27,8 @@ function gameStart() {
             gameFinish();
         } else {
             cycle();
-            gameRounds++;
-            document.getElementById('score').innerHTML = `Score: ${score}`;
-            document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
-        } }, 5000);
+            roundSetter();
+        } }, gameRoundLength);
 }
 
 function gameCheck() {
@@ -41,6 +37,11 @@ function gameCheck() {
     } else {
         return true;
     }
+}
+
+function roundSetter() {
+    gameRounds++;
+    document.getElementById('level-count').innerHTML = `Level: ${gameRounds}`;
 }
 
 // ADD CORRECT NUMBER OF ALIENS
@@ -62,16 +63,6 @@ function spawnAlien() {
     id += 1;
 }
 
-function birthAlien(alienPath, top, left) {
-    var alien = document.createElement("img");
-    alien.setAttribute('class', 'alien');
-    alien.setAttribute('style', 'top: '+ top + '%; left: '+left+'%;');
-    alien.setAttribute('onclick', 'deleteAlien(this)');
-    alien.setAttribute('src', alienPath);
-    alien.setAttribute('id', id);
-    area.appendChild(alien);
-}
-
 function positionRandomizerDesktop(identifyier) {
     var output = Math.floor((Math.random() * 100) + 1);
     if (identifyier == 0) {
@@ -86,6 +77,16 @@ function positionRandomizerDesktop(identifyier) {
     return output;
 }
 
+function birthAlien(alienPath, top, left) {
+    var alien = document.createElement("img");
+    alien.setAttribute('class', 'alien');
+    alien.setAttribute('style', 'top: '+ top + '%; left: '+left+'%;');
+    alien.setAttribute('onclick', 'deleteAlien(this)');
+    alien.setAttribute('src', alienPath);
+    alien.setAttribute('id', id);
+    area.appendChild(alien);
+}
+
 // ALIEN FUNCTION
 
 function deleteAlien(alien) {
@@ -97,31 +98,50 @@ function deleteAlien(alien) {
 }
 
 function gameFinish() {
+    clearTimeout(countingClock);
+
     var parent = document.getElementById("area");
     children = document.getElementsByClassName("alien");
     childrenN = children.length;
     for (var i = 0; i < childrenN; i++) {
         parent.removeChild(children[0]);
     }
-    document.getElementById("score").innerHTML = `DIED
-    Score: ${score}`;
-    clearTimeout(countingClock);
 
-
-    const bodyElement = document.body;
-    const startScreen = document.getElementsByClassName("starting-element-container")[0];
-    setTimeout(() => {
-        startScreen.style.display = 'flex';
-        clockSeconds = 0;
-        clockMinutes = 0;
-        score = 0;
-        document.getElementByID("score").innerHTML = score;
-        gameRounds = 1;
-        aliensHeadCount = 0;
-        cycleNumber = 2;
-    }, 3000);
+    document.getElementById("score").innerHTML = `DIED <br><br> Score: ${score}`;
+    displayEndscreen();
 }
 
+function displayEndscreen() {
+    var area = document.getElementById("area");
+    var endtext = document.createElement("div");
+    endtext.setAttribute('class', 'endtext');
+    area.appendChild(endtext);
+    document.getElementsByClassName("endtext")[0].innerHTML = `Thank you for playing! Try again:<br>`;
+    var endbutton = document.createElement("button");
+    endbutton.setAttribute('class', 'endbutton');
+    endbutton.setAttribute('onclick', 'newGameInitiator()');
+    endtext.appendChild(endbutton);
+    document.getElementsByClassName("endbutton")[0].innerHTML = `New Game`;
+}
+
+function newGameInitiator() {
+    resetGlobalVariables();
+    var parent = document.getElementById("area");
+    child = document.getElementsByClassName("endtext");
+    parent.removeChild(child[0]);
+    gameStart();
+}
+
+function resetGlobalVariables() {
+    aliensHeadCount = 0;
+    cycleNumber = 2;
+    gameRounds = 1;
+    id = 0;
+    score = 0;
+    died = false;
+    clockSeconds = 00;
+    clockMinutes = 00;
+}
 
 // CLOCK FUNCTION
 function gameClock() {
@@ -129,7 +149,7 @@ function gameClock() {
 
     if (clockMinutes < 10 && clockSeconds < 10) {
         clock.innerHTML = `0${clockMinutes}:0${clockSeconds}`;
-    } 
+    }
     else if (clockMinutes > 9 && clockSeconds < 10) {
         clock.innerHTML = `${clockMinutes}:0${clockSeconds}`;
     }
@@ -139,10 +159,8 @@ function gameClock() {
     else {
         clock.innerHTML = `${clockMinutes}:${clockSeconds}`;
     }
-    
     if (clockSeconds > 59) {
         clockMinutes++;
         clockSeconds = 0;
     }
-
 }

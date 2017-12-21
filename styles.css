@@ -205,7 +205,6 @@
     flex-direction: column;
     justify-content: space-around;
     height: 51vh;
-    padding: 5vh 0;
   }
 
   .score-box {
@@ -226,11 +225,43 @@
 
   .level {
     width: 25vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
+	line-height: 2vw;
     text-shadow: 1px 1px blue;
+	border: 1px solid white;
+	margin: 5vh 0 0 0;
   }
 
 
+
+  /* END OF THE GAME
+  -----------------------------*/
+
+  .endtext {
+	  font-family: 'Press Start 2P', "Lato", sans-serif;
+	  color: white;
+	  position: absolute;
+	  max-width: 350px;
+	  left: calc(50% - 10.9rem);
+	  line-height: 2rem;
+	  top: 40%;
+	  font-size: 1.3rem;
+	  text-align: center;
+  }
+
+  .endbutton {
+	  font-family: 'Press Start 2P', "Lato", sans-serif;
+	  font-size: 1rem;
+	  border: 0;
+	  background: #452F74;
+	  color: white;
+	  margin: 20px;
+	  padding: 10px;
+  }
+
+  .endbutton:hover {
+	  transform: scale(1.05);
+  }
 
   /* MOBILE
   -----------------------------*/
