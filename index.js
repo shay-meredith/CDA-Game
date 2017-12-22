@@ -1,21 +1,25 @@
-var cycleNumber = 2;
 var aliensHeadCount = 0;
+var cycleNumber = 2;
 var gameRounds = 1;
+var gameRoundLength = 7000;
 var id = 0;
+var idmaker;
 var score = 0;
 var died = false;
 let countingClock;
+let clockSeconds = 00;
+let clockMinutes = 00;
+const clock = document.getElementById("clock");
 
 function loadGame() {
-  var parent = document.body;
-  var child = document.getElementsByClassName("starting-element-container")[0];
-  countingClock = setInterval(gameClock, 1000);
-  clock.innerHTML = "00:00";
-  parent.removeChild(child);
-  gameStart();
+    var startContainer = document.getElementsByClassName("starting-element-container")[0];
+    startContainer.style.display = 'none';
+    gameStart();
 }
 
 function gameStart() {
+    countingClock = setInterval(gameClock, 1000);
+    clock.innerHTML = "00:00";
     cycle();
     var timer = setInterval(function(){
         died = gameCheck();
@@ -24,7 +28,8 @@ function gameStart() {
             gameFinish();
         } else {
             cycle();
-        } }, 5000);
+            roundSetter();
+        } }, gameRoundLength);
 }
 
 function gameCheck() {
@@ -35,6 +40,15 @@ function gameCheck() {
     }
 }
 
+function roundSetter() {
+    var roundbox = document.getElementById('level-count');
+    gameRounds++;
+    roundbox.innerHTML = `Level: <b>${gameRounds}</b>`;
+    roundbox.classList.add("scaleAnimation");
+    setTimeout(function(){ roundbox.classList.remove("scaleAnimation");}, 102);
+}
+
+// ADD CORRECT NUMBER OF ALIENS
 function cycle() {
     cycleNumber += 1;
     aliensHeadCount += cycleNumber;
@@ -50,17 +64,9 @@ function spawnAlien() {
     var top = positionRandomizerDesktop(0);
     var left = positionRandomizerDesktop(1);
     birthAlien(alienPath, top, left);
+    idmaker = "a" + id;
+    document.getElementById(idmaker).classList.add("visible");
     id += 1;
-}
-
-function birthAlien(alienPath, top, left) {
-    var alien = document.createElement("img");
-    alien.setAttribute('class', 'alien');
-    alien.setAttribute('style', 'top: '+ top + '%; left: '+left+'%;');
-    alien.setAttribute('onclick', 'deleteAlien(this)');
-    alien.setAttribute('src', alienPath);
-    alien.setAttribute('id', id);
-    area.appendChild(alien);
 }
 
 function positionRandomizerDesktop(identifyier) {
@@ -77,39 +83,84 @@ function positionRandomizerDesktop(identifyier) {
     return output;
 }
 
+function birthAlien(alienPath, top, left) {
+    var alien = document.createElement("img");
+    alien.setAttribute('class', 'alien');
+    alien.setAttribute('style', 'top: '+ top + '%; left: '+left+'%;');
+    alien.setAttribute('onclick', 'deleteAlien(this)');
+    alien.setAttribute('src', alienPath);
+    alien.setAttribute('id', "a" + id);
+    area.appendChild(alien);
+}
+
 // ALIEN FUNCTION
 
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
-    score += 10;
-    document.getElementsByClassName("score")[0].innerHTML = score;
+    score += Math.floor( (10*Math.pow( gameRounds,1.01) ) / 3 + Math.random() );
     var parent = document.getElementById("area");
     parent.removeChild(alien);
+    document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
+    document.getElementById('score').classList.add("scaleAnimation");
+    setTimeout(function(){ document.getElementById('score').classList.remove("scaleAnimation");}, 102);
+    return;
 }
 
 function gameFinish() {
+    clearTimeout(countingClock);
+
     var parent = document.getElementById("area");
     children = document.getElementsByClassName("alien");
     childrenN = children.length;
     for (var i = 0; i < childrenN; i++) {
         parent.removeChild(children[0]);
     }
-    document.getElementsByClassName("score")[0].innerHTML = "DIED Score: " + score;
-    clearTimeout(countingClock);
+
+    document.getElementById("score").innerHTML = `<i> &nbsp;DIED</i> <br><br> Score: <b>${score}</b>`;
+    displayEndscreen();
 }
 
+function displayEndscreen() {
+    var area = document.getElementById("area");
+    var endtext = document.createElement("div");
+    endtext.setAttribute('class', 'endtext');
+    area.appendChild(endtext);
+    document.getElementsByClassName("endtext")[0].innerHTML = `Thank you for playing! Try again:<br>`;
+    var endbutton = document.createElement("button");
+    endbutton.setAttribute('class', 'endbutton');
+    endbutton.setAttribute('onclick', 'newGameInitiator()');
+    endtext.appendChild(endbutton);
+    document.getElementsByClassName("endbutton")[0].innerHTML = `New Game`;
+}
+
+function newGameInitiator() {
+    resetGlobalVariables();
+    var parent = document.getElementById("area");
+    child = document.getElementsByClassName("endtext");
+    parent.removeChild(child[0]);
+    document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
+    document.getElementById('level-count').innerHTML = `Level: <b>${gameRounds}</b>`;
+    gameStart();
+}
+
+function resetGlobalVariables() {
+    aliensHeadCount = 0;
+    cycleNumber = 2;
+    gameRounds = 1;
+    id = 0;
+    score = 0;
+    died = false;
+    clockSeconds = 00;
+    clockMinutes = 00;
+}
 
 // CLOCK FUNCTION
-let clockSeconds = 00;
-let clockMinutes = 00;
-const clock = document.getElementById("clock");
-
 function gameClock() {
     clockSeconds++;
 
     if (clockMinutes < 10 && clockSeconds < 10) {
         clock.innerHTML = `0${clockMinutes}:0${clockSeconds}`;
-    } 
+    }
     else if (clockMinutes > 9 && clockSeconds < 10) {
         clock.innerHTML = `${clockMinutes}:0${clockSeconds}`;
     }
@@ -119,10 +170,10 @@ function gameClock() {
     else {
         clock.innerHTML = `${clockMinutes}:${clockSeconds}`;
     }
-    
     if (clockSeconds > 59) {
         clockMinutes++;
         clockSeconds = 0;
     }
-
+    clock.classList.add("scaleAnimation");
+    setTimeout(function(){ clock.classList.remove("scaleAnimation");}, 102);
 }
