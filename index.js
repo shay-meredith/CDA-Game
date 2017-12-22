@@ -9,12 +9,20 @@ var died = false;
 let countingClock;
 let clockSeconds = 00;
 let clockMinutes = 00;
+var mobile = false;
 const clock = document.getElementById("clock");
 
 function loadGame() {
     var startContainer = document.getElementsByClassName("starting-element-container")[0];
     startContainer.style.display = 'none';
+    mobileIdentifyier();
     gameStart();
+}
+
+function mobileIdentifyier() {
+    if (document.body.offsetWidth < 601) {
+        mobile = true;
+    }
 }
 
 function gameStart() {
@@ -61,25 +69,41 @@ function spawnAlien() {
     var area = document.getElementById("area");
     var alienNumber = Math.floor((Math.random() * 10) + 1); // 1 to 10
     var alienPath = "img/space/invader"+alienNumber+".png";
-    var top = positionRandomizerDesktop(0);
-    var left = positionRandomizerDesktop(1);
+    var top = positionRandomizer(0);
+    var left = positionRandomizer(1);
     birthAlien(alienPath, top, left);
     idmaker = "a" + id;
     document.getElementById(idmaker).classList.add("visible");
     id += 1;
 }
 
-function positionRandomizerDesktop(identifyier) {
+function positionRandomizer(identifyier) {
     var output = Math.floor((Math.random() * 100) + 1);
-    if (identifyier == 0) {
-        while (output > 92) {
-            output = Math.floor((Math.random() * 100) + 1);
+    // first if checks if the website is on a mobile device
+    if (mobile) {
+        console.log(mobile);
+        if (identifyier == 0) {
+            while (16 > output || output > 94) {
+                output = Math.floor((Math.random() * 100) + 1);
+            }
+        } else {
+            while (output > 91) {
+                output = Math.floor((Math.random() * 100) + 1);
+            }
         }
+        //the following is for desktops
     } else {
-        while (25 > output || output > 67) {
-            output = Math.floor((Math.random() * 100) + 1);
+        if (identifyier == 0) {
+            while (output > 93) {
+                output = Math.floor((Math.random() * 100) + 1);
+            }
+        } else {
+            while (25 > output || output > 71) {
+                output = Math.floor((Math.random() * 100) + 1);
+            }
         }
     }
+
     return output;
 }
 
