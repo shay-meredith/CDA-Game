@@ -229,6 +229,15 @@
     height: 21vh;
   }
 
+  .scaleAnimation {
+	  animation: scale 0.1s ease backwards;
+  }
+
+  @keyframes scale {
+	  0% {transform: scale(1);}
+	  100% {transform: scale(1.15);}
+  }
+
   .clock-box {
     padding: 3vh 0 0 0;
     display: flex;

@@ -41,8 +41,11 @@ function gameCheck() {
 }
 
 function roundSetter() {
+    var roundbox = document.getElementById('level-count');
     gameRounds++;
-    document.getElementById('level-count').innerHTML = `Level: <b>${gameRounds}</b>`;
+    roundbox.innerHTML = `Level: <b>${gameRounds}</b>`;
+    roundbox.classList.add("scaleAnimation");
+    setTimeout(function(){ roundbox.classList.remove("scaleAnimation");}, 102);
 }
 
 // ADD CORRECT NUMBER OF ALIENS
@@ -94,10 +97,13 @@ function birthAlien(alienPath, top, left) {
 
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
-    score += Math.floor((10*Math.pow(gameRounds,1.01))/3);
-    document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
+    score += Math.floor( (10*Math.pow( gameRounds,1.01) ) / 3 + Math.random() );
     var parent = document.getElementById("area");
     parent.removeChild(alien);
+    document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
+    document.getElementById('score').classList.add("scaleAnimation");
+    setTimeout(function(){ document.getElementById('score').classList.remove("scaleAnimation");}, 102);
+    return;
 }
 
 function gameFinish() {
@@ -168,4 +174,6 @@ function gameClock() {
         clockMinutes++;
         clockSeconds = 0;
     }
+    clock.classList.add("scaleAnimation");
+    setTimeout(function(){ clock.classList.remove("scaleAnimation");}, 102);
 }
