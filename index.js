@@ -1,5 +1,5 @@
 var aliensHeadCount = 0;
-var cycleNumber = 500;
+var cycleNumber = 2;
 var gameRounds = 1;
 var gameRoundLength = 7000;
 var id = 0;
