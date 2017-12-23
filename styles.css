@@ -5,6 +5,7 @@
 	html, body {
 	    padding: 0;
 	    margin: 0;
+		background-color: #16063A;
 	}
 
 	/* START SCREEN CSS
@@ -289,6 +290,10 @@
   -----------------------------*/
 
 	@media only screen and (max-width: 600px) {
+		body {
+			overflow: hidden;
+		}
+
 	    .wrapper {
 	        flex-direction: column;
 			height: 100%;
