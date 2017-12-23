@@ -86,6 +86,7 @@ function spawnAlien() {
     birthAlien(alienPath, top, left);
     idmaker = "a" + id;
     document.getElementById(idmaker).classList.add("visible");
+    alienMovement(idmaker, top, left);
     id += 1;
 }
 
@@ -125,6 +126,38 @@ function birthAlien(alienPath, top, left) {
     alien.setAttribute('src', alienPath);
     alien.setAttribute('id', "a" + id);
     area.appendChild(alien);
+}
+
+function alienMovement(idmaker, top, left) {
+    var movingAlien = document.getElementById(idmaker);
+    var topNew = positionRandomizer(0);
+    var leftNew = positionRandomizer(1);
+    var mover = setInterval(function(){
+        setTimeout(function(){clearTimeout(mover);},6990);
+        if (top != topNew || left != leftNew) {
+            if (top != topNew) {
+                if (top > topNew) {
+                    top = (top * 100 - 1) / 100;
+                    movingAlien.style.top = top + "%";
+                } else {
+                    top = (top * 100 + 1) / 100;
+                    movingAlien.style.top = top + "%";
+                }
+            }
+            if (left != leftNew) {
+                if (left > leftNew) {
+                    left = (left * 100 - 1) / 100;
+                    movingAlien.style.left = left + "%";
+                } else {
+                    left = (left * 100 + 1) / 100;
+                    movingAlien.style.left = left + "%";
+                }
+            }
+        } else {
+            topNew = positionRandomizer(0);
+            leftNew = positionRandomizer(1);
+        }
+    }, 1);
 }
 
 // ALIEN FUNCTION
