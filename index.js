@@ -11,6 +11,7 @@ let clockSeconds = 00;
 let clockMinutes = 00;
 var mobile = false;
 const clock = document.getElementById("clock");
+var mobileSpawnHeight = 94;
 
 window.onorientationchange = function() { window.location.reload(); };
 
@@ -24,6 +25,15 @@ function loadGame() {
 function mobileIdentifyier() {
     if (document.body.offsetWidth < 601) {
         mobile = true;
+        var sheet = window.document.styleSheets[1];
+        var rule;
+        if (navigator.userAgent.search("Chrome") != -1) {
+            var agent = navigator.userAgent;
+            agent = agent.slice(agent.search("Chrome"), agent.search("Safari"));
+            if (agent.search("Mobile")) {
+                document.getElementsByClassName("wrapper")[0].style.height = "92vh";
+            }
+        }
     }
 }
 
@@ -83,13 +93,12 @@ function positionRandomizer(identifyier) {
     var output = Math.floor((Math.random() * 100) + 1);
     // first if checks if the website is on a mobile device
     if (mobile) {
-        console.log(mobile);
         if (identifyier == 0) {
-            while (16 > output || output > 94) {
+            while (16 > output || output > mobileSpawnHeight) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         } else {
-            while (output > 84) {
+            while (output > 92) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         }
