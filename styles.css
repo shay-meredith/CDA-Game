@@ -5,6 +5,7 @@
 	html, body {
 	    padding: 0;
 	    margin: 0;
+		background-color: #16063A;
 	}
 
 	/* START SCREEN CSS
@@ -232,26 +233,26 @@
 	}
 
 	.clock {
-	    text-shadow: 2px 2px #E7AFD3;
+	    text-shadow: 2px 0px #E7AFD3;
 	}
 
 	b {
 	    font-weight: normal;
-	    text-shadow: 2px 1px #E7AFD3;
+	    text-shadow: 2px 0px #E7AFD3;
 	}
 
 	i {
 	    font-style: normal;
 	    font-weight: bold;
 	    color: #A43741;
-	    text-shadow: 2px 1px #220003;
+	    text-shadow: 2px 0px #220003;
 	}
 
 	.level {
 	    width: 25vw;
 	    font-size: 1.5vw;
 	    line-height: 2vw;
-	    text-shadow: 2px 1px #1F1959;
+	    text-shadow: 2px 0px #1F1959;
 	    margin: 5vh 0 0 0;
 	}
 
@@ -282,15 +283,22 @@
 
 	.endbutton:hover {
 	    transform: scale(1.05);
-	    text-shadow: 2px 1px #220003;
+	    text-shadow: 2px 0px #220003;
 	}
 
 	/* MOBILE CHANGES
   -----------------------------*/
 
 	@media only screen and (max-width: 600px) {
+		body {
+			overflow: hidden;
+		}
+
 	    .wrapper {
 	        flex-direction: column;
+			height: 100%;
+		    width: 100%;
+			overflow-x: hidden;
 	    }
 
         /* INFO SECTION */

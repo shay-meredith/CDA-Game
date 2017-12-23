@@ -1,5 +1,5 @@
 var aliensHeadCount = 0;
-var cycleNumber = 2;
+var cycleNumber = 500;
 var gameRounds = 1;
 var gameRoundLength = 7000;
 var id = 0;
@@ -11,6 +11,9 @@ let clockSeconds = 00;
 let clockMinutes = 00;
 var mobile = false;
 const clock = document.getElementById("clock");
+var mobileSpawnHeight = 94;
+
+window.onorientationchange = function() { window.location.reload(); };
 
 function loadGame() {
     var startContainer = document.getElementsByClassName("starting-element-container")[0];
@@ -22,8 +25,18 @@ function loadGame() {
 function mobileIdentifyier() {
     if (document.body.offsetWidth < 601) {
         mobile = true;
+        var sheet = window.document.styleSheets[1];
+        var rule;
+        if (navigator.userAgent.search("Chrome") != -1) {
+            var agent = navigator.userAgent;
+            agent = agent.slice(agent.search("Chrome"), agent.search("Safari"));
+            if (agent.search("Mobile")) {
+                mobileSpawnHeight = 86;
+            }
+        }
     }
 }
+
 
 function gameStart() {
     countingClock = setInterval(gameClock, 1000);
@@ -81,13 +94,12 @@ function positionRandomizer(identifyier) {
     var output = Math.floor((Math.random() * 100) + 1);
     // first if checks if the website is on a mobile device
     if (mobile) {
-        console.log(mobile);
         if (identifyier == 0) {
-            while (16 > output || output > 94) {
+            while (16 > output || output > mobileSpawnHeight) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         } else {
-            while (output > 91) {
+            while (output > 92) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         }
@@ -103,7 +115,6 @@ function positionRandomizer(identifyier) {
             }
         }
     }
-
     return output;
 }
 
