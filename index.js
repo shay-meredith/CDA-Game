@@ -133,23 +133,27 @@ function alienMovement(idmaker, top, left) {
     var topNew = positionRandomizer(0);
     var leftNew = positionRandomizer(1);
     var mover = setInterval(function(){
-        setTimeout(function(){clearTimeout(mover);},6990);
+        setTimeout(function(){clearTimeout(mover);},7000);
         if (top != topNew || left != leftNew) {
             if (top != topNew) {
                 if (top > topNew) {
                     top = (top * 100 - 1) / 100;
+                    top = Math.round((top + 0.00001) * 100) / 100;
                     movingAlien.style.top = top + "%";
                 } else {
                     top = (top * 100 + 1) / 100;
+                    top = Math.round((top + 0.00001) * 100) / 100;
                     movingAlien.style.top = top + "%";
                 }
             }
             if (left != leftNew) {
                 if (left > leftNew) {
                     left = (left * 100 - 1) / 100;
+                    left = Math.round((left + 0.00001) * 100) / 100;
                     movingAlien.style.left = left + "%";
                 } else {
                     left = (left * 100 + 1) / 100;
+                    left = Math.round((left + 0.00001) * 100) / 100;
                     movingAlien.style.left = left + "%";
                 }
             }
@@ -157,7 +161,7 @@ function alienMovement(idmaker, top, left) {
             topNew = positionRandomizer(0);
             leftNew = positionRandomizer(1);
         }
-    }, 1);
+    }, 2);
 }
 
 // ALIEN FUNCTION
