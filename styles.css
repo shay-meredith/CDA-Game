@@ -296,15 +296,15 @@
 
 	    .wrapper {
 	        flex-direction: column;
-			height: 100%;
-		    width: 100%;
+			height: 100vh;
+		    width: 100vw;
 			overflow-x: hidden;
 	    }
 
         /* INFO SECTION */
 
 	    .info-container {
-	        height: 15vh;
+	        height: 15%;
 	        width: 100vw;
 	        flex-direction: row;
 	        justify-content: center;
@@ -367,7 +367,7 @@
         /* GAME SECTION */
 
 	    .play-container {
-	        height: 85vh;
+	        height: 85%;
 	        width: 100vw;
 	        background-color: #16063A;
 	        overflow: hidden;
