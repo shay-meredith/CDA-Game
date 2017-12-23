@@ -1,5 +1,5 @@
 var aliensHeadCount = 0;
-var cycleNumber = 2;
+var cycleNumber = 500;
 var gameRounds = 1;
 var gameRoundLength = 7000;
 var id = 0;
@@ -11,7 +11,7 @@ let clockSeconds = 00;
 let clockMinutes = 00;
 var mobile = false;
 const clock = document.getElementById("clock");
-var mobileSpawnHeight = 94;
+var mobileSpawnHeight = 93;
 
 window.onorientationchange = function() { window.location.reload(); };
 
@@ -105,11 +105,11 @@ function positionRandomizer(identifyier) {
         //the following is for desktops
     } else {
         if (identifyier == 0) {
-            while (output > 93) {
+            while (output > 91) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         } else {
-            while (25 > output || output > 71) {
+            while (26 > output || output > 70) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         }
