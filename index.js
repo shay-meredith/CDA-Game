@@ -31,12 +31,11 @@ function mobileIdentifyier() {
             var agent = navigator.userAgent;
             agent = agent.slice(agent.search("Chrome"), agent.search("Safari"));
             if (agent.search("Mobile")) {
-                mobileSpawnHeight = 86;
+                document.getElementsByClassName("wrapper")[0].style.height = "92vh";
             }
         }
     }
 }
-
 
 function gameStart() {
     countingClock = setInterval(gameClock, 1000);
