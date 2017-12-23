@@ -12,6 +12,8 @@ let clockMinutes = 00;
 var mobile = false;
 const clock = document.getElementById("clock");
 
+window.onorientationchange = function() { window.location.reload(); };
+
 function loadGame() {
     var startContainer = document.getElementsByClassName("starting-element-container")[0];
     startContainer.style.display = 'none';
@@ -87,7 +89,7 @@ function positionRandomizer(identifyier) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         } else {
-            while (output > 91) {
+            while (output > 84) {
                 output = Math.floor((Math.random() * 100) + 1);
             }
         }
@@ -103,7 +105,6 @@ function positionRandomizer(identifyier) {
             }
         }
     }
-
     return output;
 }
 
