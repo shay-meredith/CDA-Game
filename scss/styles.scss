@@ -134,6 +134,31 @@ html, body {
     100% {opacity: 1;}
 }
 
+.deathCircle {
+    border: 1px solid rgba(255, 255, 255, 1);
+    width: 4vw;
+    height: 4vw;
+    background: white;
+    border-radius: 50%;
+    opacity: 1;
+    position: absolute;
+    animation: pulse 0.2s ease forwards;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.2; transform: scale(1,1);}
+    100% {transform: scale(3,3); opacity: 0;}
+}
+
+.deathAnimation {
+    animation: explode 0.2s ease;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1;}
+    100% { transform: scale(1.5); opacity: 0;}
+}
+
 /* INFO SECTION
 -----------------------------*/
 
@@ -326,6 +351,11 @@ html, body {
     }
 
     .alien {
+        width: 8vw;
+        height: 8vw;
+    }
+
+    .deathCircle {
         width: 8vw;
         height: 8vw;
     }
