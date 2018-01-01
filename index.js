@@ -85,7 +85,9 @@ function spawnAlien() {
     var left = positionRandomizer(1);
     birthAlien(alienPath, top, left);
     idmaker = "a" + id;
+    boxidmaker = "b" + id;
     document.getElementById(idmaker).classList.add("visible");
+    document.getElementById(boxidmaker).classList.add("visible");
     alienMovement(idmaker, top, left);
     id += 1;
 }
@@ -119,13 +121,17 @@ function positionRandomizer(identifyier) {
 }
 
 function birthAlien(alienPath, top, left) {
+    var box = document.createElement("div");
+    box.setAttribute('id', "b" + id);
+    box.setAttribute('class', "detect-this");
+    area.appendChild(box);
     var alien = document.createElement("img");
     alien.setAttribute('class', 'alien');
     alien.setAttribute('style', 'top: '+ top + '%; left: '+left+'%;');
     alien.setAttribute('onclick', 'deleteAlien(this)');
     alien.setAttribute('src', alienPath);
     alien.setAttribute('id', "a" + id);
-    area.appendChild(alien);
+    box.appendChild(alien);
 }
 
 function alienMovement(idmaker, top, left) {
@@ -169,11 +175,21 @@ function alienMovement(idmaker, top, left) {
 function deleteAlien(alien) {
     aliensHeadCount -= 1;
     score += Math.floor( (10*Math.pow( gameRounds,1.01) ) / 3 + Math.random() );
-    var parent = document.getElementById("area");
-    parent.removeChild(alien);
+    dyingAnimation(alien);
     document.getElementById('score').innerHTML = `Score: <b>${score}</b>`;
     document.getElementById('score').classList.add("scaleAnimation");
     setTimeout(function(){ document.getElementById('score').classList.remove("scaleAnimation");}, 102);
+    return;
+}
+
+function dyingAnimation(alien) {
+    alien.classList.add("deathAnimation");
+    var box = document.getElementById("b" + alien.id.slice(1))
+    var circle = document.createElement("div");
+    circle.setAttribute('class', "deathCircle");
+    circle.setAttribute('style', 'top: '+ alien.style.top + '; left: ' + alien.style.left + ';');
+    box.appendChild(circle);
+    setTimeout(function(){ var parent = document.getElementById("area"); parent.removeChild(box); }, 200);
     return;
 }
 
@@ -181,12 +197,11 @@ function gameFinish() {
     clearTimeout(countingClock);
 
     var parent = document.getElementById("area");
-    children = document.getElementsByClassName("alien");
+    children = document.getElementsByClassName("detect-this");
     childrenN = children.length;
     for (var i = 0; i < childrenN; i++) {
         parent.removeChild(children[0]);
     }
-
     document.getElementById("score").innerHTML = `<i> &nbsp;DIED</i> <br><br> Score: <b>${score}</b>`;
     displayEndscreen();
 }

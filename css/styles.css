@@ -206,6 +206,75 @@ html, body {
   }
 }
 
+.deathCircle {
+  border: 1px solid white;
+  width: 4vw;
+  height: 4vw;
+  background: white;
+  border-radius: 50%;
+  opacity: 1;
+  position: absolute;
+  -webkit-animation: pulse 0.2s ease forwards;
+  animation: pulse 0.2s ease forwards;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0.2;
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(3, 3);
+    transform: scale(3, 3);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.2;
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(3, 3);
+    transform: scale(3, 3);
+    opacity: 0;
+  }
+}
+
+.deathAnimation {
+  -webkit-animation: explode 0.2s ease;
+  animation: explode 0.2s ease;
+}
+
+@-webkit-keyframes explode {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes explode {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 /* INFO SECTION
 -----------------------------*/
 .info-container {
@@ -459,6 +528,10 @@ html, body {
     overflow: hidden;
   }
   .alien {
+    width: 8vw;
+    height: 8vw;
+  }
+  .deathCircle {
     width: 8vw;
     height: 8vw;
   }
