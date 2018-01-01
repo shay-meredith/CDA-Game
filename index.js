@@ -246,6 +246,7 @@ function displayEndscreen() {
 
 function newGameInitiator() {
     resetGlobalVariables();
+    mobileIdentifyier();
     var parent = document.getElementById("area");
     child = document.getElementsByClassName("endtext");
     parent.removeChild(child[0]);
