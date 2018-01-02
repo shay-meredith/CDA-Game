@@ -14,12 +14,34 @@ const clock = document.getElementById("clock");
 var mobileSpawnHeight = 93;
 
 window.onorientationchange = function() { window.location.reload(); };
+window.addEventListener("resize", function(event) {
+    if (document.body.offsetWidth > 600) {
+        document.getElementsByClassName("wrapper")[0].style.height = "100vh";
+    }
+    if (died == false) {
+        widthFix();
+    }
+});
+//
 
 function loadGame() {
     var startContainer = document.getElementsByClassName("starting-element-container")[0];
     startContainer.style.display = 'none';
     mobileIdentifyier();
     gameStart();
+}
+
+function widthFix() {
+    mobileIdentifyier();
+    var parent = document.getElementById("area");
+    children = document.getElementsByClassName("detect-this");
+    childrenN = children.length;
+    for (var i = 0; i < childrenN; i++) {
+        parent.removeChild(children[0]);
+    }
+    for (var j = 0; j < aliensHeadCount; j++) {
+        spawnAlien();
+    }
 }
 
 function mobileIdentifyier() {
@@ -30,10 +52,12 @@ function mobileIdentifyier() {
         if (navigator.userAgent.search("Chrome") != -1) {
             var agent = navigator.userAgent;
             agent = agent.slice(agent.search("Chrome"), agent.search("Safari"));
-            if (agent.search("Mobile")) {
+            if (agent.search("Mobile") > 0) {
                 document.getElementsByClassName("wrapper")[0].style.height = "92vh";
             }
         }
+    } else {
+        mobile = false;
     }
 }
 
@@ -194,6 +218,7 @@ function dyingAnimation(alien) {
 }
 
 function gameFinish() {
+    died = true;
     clearTimeout(countingClock);
 
     var parent = document.getElementById("area");
@@ -221,6 +246,7 @@ function displayEndscreen() {
 
 function newGameInitiator() {
     resetGlobalVariables();
+    mobileIdentifyier();
     var parent = document.getElementById("area");
     child = document.getElementsByClassName("endtext");
     parent.removeChild(child[0]);
